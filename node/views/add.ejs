@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">        
+<head>        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">                            
+        <div class="row" style="margin:100px 100px 0px 0px">
+            <div class="col-sm-4" style="margin:0px 0px 0px 200px">                    
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Actor</button>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">    
+                        <!-- Modal content-->
+                        <div class="modal-content modal-sm" style="margin: 0 auto;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Actor Information</h4>
+                            </div>
+                            <div class="modal-body" style="text-align: center">
+                                    <form method ="POST" action="/actorSave" >
+                                        <label style="margin: 50px 0px 0px 20px ">Name :</label>
+                                        <input type="text" id="Name" name="name"><br><br>
+                                        <label style="margin: 50px 0px 0px 0px ">DOB :</label>
+                                        <input type="date" id="dob" name="dob" ><br><br>
+                                        <label style="margin: 50px 0px 0px 0px" >Gender:</label>
+                                        <select name='gender' id='gender'>
+                                            <option value='M'>Male</option>
+                                            <option value='F'>Female</option>
+                                            <option value='O'>Others</option>
+                                        </select><br><br>
+                                        <label style="margin: 50px 0px 0px 0px ">Bio :</label>
+                                        <input type="text" id="bio" name="bio"><br><br>                                        
+                                        <input style="margin: 50px 0px 0px 0px" type="submit" id="submit">
+                                    </form>                
+                            </div>
+                            <div class="modal-footer " style="text-align: center">                                        
+                                <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>            
+                    </div>
+                </div>
+            </div>                                                                             
+            <div class="col-sm-4" style="margin:0px 0px 0px 120px">                    
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#proModal">Add Producer</button>
+                <!-- Modal -->
+                <div class="modal fade" id="proModal" role="dialog">
+                    <div class="modal-dialog">    
+                        <!-- Modal content-->
+                        <div class="modal-content modal-sm" style="margin: 0 auto;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Producer Information</h4>
+                            </div>
+                            <div class="modal-body" style="text-align: center">
+                                    <form method ="POST" action="/producerSave" >
+                                        <label style="margin: 50px 0px 0px 20px ">Name :</label>
+                                        <input type="text" id="Name" name="name"><br><br>
+                                        <label style="margin: 50px 0px 0px 0px ">DOB :</label>
+                                        <input type="date" id="dob" name="dob" ><br><br>
+                                        <label style="margin: 50px 0px 0px 0px" >Gender:</label>
+                                        <select name='gender' id='gender'>
+                                            <option value='M'>Male</option>
+                                            <option value='F'>Female</option>
+                                        </select><br><br>
+                                        <label style="margin: 50px 0px 0px 0px ">Bio :</label>
+                                        <input type="text" id="bio" name="bio"><br><br>                                        
+                                        <input style="margin: 50px 0px 0px 0px" type="submit" id="submit">
+                                    </form>                
+                            </div>
+                            <div class="modal-footer " style="text-align: center">                                        
+                                <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>            
+                    </div>
+                </div>
+            </div>                           
+        </div>
+        <div class="row" style="margin:0px 100px 0px 100px">
+            <div class="col-sm-4">                                    
+            </div>
+            <div class="col-sm-8">
+                <form method ="POST" action="/movieSave" >
+                    <label style="margin: 50px 0px 0px 0px ">Name :</label>
+                    <input type="text" id="Name" name="name"><br><br>
+                    <label style="margin: 50px 7px 0px 0px ">Year :</label>
+                    <input type="date" id="yor" name="yor"><br><br>
+                    <label style="margin: 50px 10px 0px 0px" >Plot:</label>
+                    <input type="text" id="plot" name="plot" ><br><br>
+                    <label style="margin: 50px 0px 0px 0px ">Poster :</label>
+                    <input type="file" id="poster" name="poster"><b> Place the pic in img file and choose it </b><br><br>
+                    <label style="margin: 50px 10px 0px 0px ">Actors Name :</label>
+                    <select multiple id="actors" name="actors">
+                        <% for(var i=0;i< resact.length;i++){%>
+                            <option value="<%=resact[i]._id %>"><%=resact[i].name%></option>
+                        <%}%>            
+                    </select><br><br>
+                    <label style="margin: 50px 0px 0px 0px" >Producer Name :</label>
+                    <select id="producers" name="producer">
+                        <% for(var i=0;i< respro.length;i++){%>
+                            <option value="<%=respro[i]._id %>"><%=respro[i].name%></option>
+                        <%}%>            
+                    </select><br><br>                        
+                    <input style="margin: 50px 0px 0px 100px" type="submit" id="submit">
+                </form>                   
+            </div>
+        </div>
+    </div>                  
+</body>
+</html> 

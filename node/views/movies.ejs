@@ -1,0 +1,28 @@
+<head><script src="../app.js" type="text/javascript"> </script></head>
+<body style="margin: 100px 0px 0px 150px">       
+      <table>
+         <tr>
+            <th></th><th></th><th>Name</th><th>Year</th><th>Producers</th><th>Actors</th> <th></th>           
+            <form method="GET" action="/movieAdd">
+               <td style="padding: 50px"><input type="submit" id="add" value="Add"></td>
+            </form>
+         </tr> 
+        <% for (var i = 0; i < result.length;  i++) { %>               
+         <tr>
+            <td><%=i+1%>.</td>
+            <td><img src="<%= result[i].poster %>"  style="width:100px;height:100px;"></td>          
+            <td style="padding: 50px"><%= result[i].name %></td>
+            <td style="padding: 50px"><%= result[i].yorstring %></td>
+            <td style="padding: 50px"><%= result[i].producername%></td>                 
+            <div>
+               <% for(var j=0;j< result[i].actorname.length;j++){%>            
+                  <td style="padding: 50px"><%= result[i].actorname[j]%></td>               
+               <% } %>
+            </div>            
+            <form method="GET" action="/updateMovies/<%=result[i].id%>">
+               <td style="padding: 50px"><input type="submit" id="info" value="info"></td>
+            </form>
+         </tr>    
+        <% } %>
+     </table>   
+</body>

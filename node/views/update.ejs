@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">        
+    </head> 
+    <body>
+        <div class="container">
+            <div class="row" style="margin:100px 100px 0px 0px">                
+            </div>
+            <div class="row" style="margin:0px 100px 0px 100px">
+                <div class="col-sm-4">                                    
+                </div>
+                <div class="col-sm-8">
+                    <form method ="POST" action="/updateSave" >
+                        <input type="hidden" value="<%=result[0]._id%>" name="_id" >
+                        <label style="margin: 50px 0px 0px 0px ">Name :</label>
+                        <input type="text" id="Name" value="<%= result[0].name %>" name="name"><br><br>
+                        <label style="margin: 50px 7px 0px 0px ">Year :</label>
+                        <input type="date" value="<%=result[0].yorstring%>" id="yor" name="yor"><br><br>
+                        <label style="margin: 50px 10px 0px 0px" >Plot:</label>
+                        <input type="text" value="<%= result[0].plot %>" id="plot" name="plot" ><br><br>
+                        <label style="margin: 50px 0px 0px 0px ">Poster :</label>
+                        <input type="file" value="<%= result[0].poster %>" id="poster" name="poster"><br><br>
+                        <label style="margin: 50px 10px 0px 0px ">Actors Name :</label>
+                        <select multiple id="actors" name="actors">
+                            <% for(var i=0;i< resact.length;i++){%>
+                                <option value="<%=resact[i]._id %>"<%= result[0].actorid.some(r=> resact[i]._id==r) ? 'selected' : '' %>><%=resact[i].name%></option>
+                            <%}%>            
+                        </select><br><br>
+                        <label style="margin: 50px 0px 0px 0px" >Producer Name :</label>
+                        <select id="producers" name="producer">
+                            <% for(var i=0;i< respro.length;i++){%>
+                                <option value="<%=respro[i]._id %>"<%= respro[i]._id == result[0].producerid ? 'selected' : '' %>><%=respro[i].name%></option>
+                            <%}%>            
+                        </select><br><br>                        
+                        <input style="margin: 50px 0px 0px 100px" type="submit" id="submit">
+                    </form>                   
+                </div>
+            </div>
+        </div>                  
+    </body>
+</html> 
