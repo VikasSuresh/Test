@@ -10,9 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "ejs": "^2.6.1",
-    "express": "^4.17.0",
-    "mongoose": "^5.5.9",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.2",
     "popups": "^1.1.3"
   }
 }
